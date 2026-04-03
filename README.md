@@ -34,6 +34,9 @@ A backend service for an Instagram‑style application built with Node.js, Expre
   - BullMQ for background job queue (sending OTP emails)
   - Nodemailer for email delivery
 
+# This diagram illustrates the database relationships between entities such as User, Post, Like, Comment, Reply, Follow, and Notification in Instagram-style backend system.
+![Uploading image.png…]()
+
 ##  API Endpoints
 ###  Authentication
 - `POST /users` → Register user (creates account, sends OTP)
