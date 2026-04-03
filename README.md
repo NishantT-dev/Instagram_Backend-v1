@@ -70,4 +70,6 @@ A backend service for an Instagram‑style application built with Node.js, Expre
 <img width="944" height="665" alt="image" src="https://github.com/user-attachments/assets/a6b94341-dd6c-4d6c-aafe-3d078b12b994" />
 
 ### POST Post (When user creates a Post then followers notifies (web sockets))
+<img width="1059" height="921" alt="image" src="https://github.com/user-attachments/assets/ef0ca3d6-5194-4357-b749-4f9f641c57dd" />
+
 <img width="795" height="217" alt="image" src="https://github.com/user-attachments/assets/4c0c3dfc-9658-4581-a734-dd4882ef0aee" />
