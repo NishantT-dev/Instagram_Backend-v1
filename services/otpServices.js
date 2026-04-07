@@ -2,6 +2,7 @@ import redisClient from "../config/redis.js";
 import transporter from "../utils/mailer.js";
 
 export const sendOtpEmail = async (email) => {
+  // To generate 6 digit OTP
   const otp = Math.floor(100000 + Math.random() * 900000).toString();
 
   // Store OTP in Redis with 5 min expiry
@@ -15,7 +16,7 @@ export const sendOtpEmail = async (email) => {
     text: `Your OTP is ${otp}. It will expire in 5 minutes.`,
   });
 
-  console.log(`✅ OTP sent to ${email}`);
+  console.log(` OTP sent to ${email}`);
   return otp;
 };
 

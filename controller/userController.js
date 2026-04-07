@@ -33,11 +33,8 @@ const registerUser = async (req, res, next) => {
       subject: "Verify your account",
       text: `Dear Recipient,
 We are sending you this message to provide your One-Time Password (OTP) for authentication purposes. Your OTP is: ${otp}. 
-Please note that for security reasons, this OTP is valid for a duration of 5 minutes from the time of issuance.
- After the 5-minute validity period, the OTP will expire and a new one must be requested should you require reconfirmation.
-We highly recommend keeping this information confidential and refraining from sharing it with anyone.
- If you did not request this OTP, please contact our support team immediately.
-Thank you for your attention and cooperation.`,
+Please note that this OTP is valid for a duration of 5 minutes from the time of issuance.
+We highly recommend keeping this information confidential and refraining from sharing it with anyone.`,
     });
 
     res.status(201).json({
@@ -149,7 +146,9 @@ const followUser = async (req, res, next) => {
     res
       .status(201)
       .json({ success: true, message: "User Followed Successfully", follow });
-  } catch (err) {
+  }
+   catch (err) {
+    // Handle duplicate key error (MongoDB error code 11000)
     if (err.code === 11000) {
       return res.status(400).json({ message: "Already following this user." });
     }
@@ -195,12 +194,12 @@ const getFollowing = async (req, res, next) => {
     next(err);
   }
 };
+
 export {
   registerUser,
   loginUser,
   refreshAccessToken,
   verifyOtp,
-  // logoutUser,
   followUser,
   unfollowUser,
   getFollowing,

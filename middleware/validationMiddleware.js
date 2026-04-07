@@ -1,6 +1,6 @@
 import Joi from "joi";
 
-// ✅ User Validation
+//  User Validation
 export const userValidation = Joi.object({
   userName: Joi.string().trim().required(),
   email: Joi.string().email().required(),
@@ -8,7 +8,7 @@ export const userValidation = Joi.object({
   role: Joi.string().valid("admin", "semiAdmin", "user").default("user"),
 });
 
-// ✅ Post Validation
+//  Post Validation
 export const postValidation = Joi.object({
   userId: Joi.string().hex().length(24), // ObjectId
   title: Joi.string().trim().required(),
@@ -37,13 +37,13 @@ export const validate = (schema) => (req, res, next) => {
   }
   next();
 };
-// ✅ Like Validation
+//  Like Validation
 export const likeValidation = Joi.object({
   userId: Joi.string().hex().length(24).required(),
   postId: Joi.string().hex().length(24).required(),
 });
 
-// ✅ Comment Validation
+//  Comment Validation
 export const commentValidation = Joi.object({
   userId: Joi.string().hex().length(24).required(),
   postId: Joi.string().hex().length(24).required(),
@@ -57,7 +57,7 @@ export const commentValidation = Joi.object({
   ),
 });
 
-// ✅ Follow Validation
+//  Follow Validation
 export const followValidation = Joi.object({
   followerId: Joi.string().hex().length(24).required(),
   followedId: Joi.string().hex().length(24).required(),

@@ -4,7 +4,6 @@ import {
   getFollowers,
   getFollowing,
   loginUser,
-  // logoutUser,
   refreshAccessToken,
   registerUser,
   unfollowUser,
@@ -12,7 +11,7 @@ import {
 } from "../controller/userController.js";
 import jwtMiddleware from "../middleware/jwtMiddleware.js";
 import { loginLimiter } from "../middleware/rateLimitMiddleware.js";
-import { sendOtpEmail, verifyOtpEmail } from "../services/otpServices.js";
+import { sendOtpEmail, } from "../services/otpServices.js";
 const userRouter = express.Router();
 
 userRouter.post("/send-otp", async (req, res) => {
@@ -21,16 +20,18 @@ userRouter.post("/send-otp", async (req, res) => {
   res.json({ message: "OTP sent", otp });
 });
 
-// Verify OTP
-userRouter.post("/verify-otp", verifyOtp);
-
+// User registration related routes
 userRouter.post("/", registerUser);
 userRouter.post("/auth/login", loginLimiter, loginUser);
 userRouter.post("/auth/refresh-token", refreshAccessToken);
 
+// Verify OTP (for user verification)
+userRouter.post("/verify-otp", verifyOtp);
+
+// User follow related routes
 userRouter.post("/follow", jwtMiddleware, followUser);
 userRouter.post("/unfollow", jwtMiddleware, unfollowUser);
-
 userRouter.get("/:userId/followers", jwtMiddleware, getFollowers);
 userRouter.get("/:userId/following", jwtMiddleware, getFollowing);
+
 export default userRouter;

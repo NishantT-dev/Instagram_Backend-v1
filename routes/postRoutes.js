@@ -18,19 +18,20 @@ import {
 } from "../controller/notificationController.js";
 const postRouter = express.Router();
 
+// Post related routes
 postRouter.post("/", jwtMiddleware, createPost);
 postRouter.get("/my-posts", jwtMiddleware, getAllPosts);
 postRouter.get("/", jwtMiddleware, getFilteredPosts); // filter posts acc. to postType
 
-postRouter.delete("/:postId", jwtMiddleware, deleteReply);
-postRouter.post("/:postId/like", jwtMiddleware, likePost);
-
+// Post action (comment,like,reply) related routes
 postRouter.post("/:postId/comment", jwtMiddleware, commentPost);
 postRouter.get("/:postId/comments", jwtMiddleware, getPostComments);
-postRouter.post("/reply", jwtMiddleware, createreply);
+postRouter.post("/:postId/like", jwtMiddleware, likePost);
 postRouter.get("/:commentId", jwtMiddleware, getRepliesByComment);
-postRouter.delete("/:replyId", jwtMiddleware, deletePost);
+postRouter.post("/reply", jwtMiddleware, createreply);
+postRouter.delete("/:replyId", jwtMiddleware, deleteReply);
 
+// Post notification related routes
 postRouter.post("/notification", jwtMiddleware, createNotification);
 postRouter.get("/notifications", jwtMiddleware, getNotifications);
 
