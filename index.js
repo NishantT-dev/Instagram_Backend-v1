@@ -6,7 +6,7 @@ import db_conn from "./config/db.js";
 import { app } from "./app.js";
 import logger from "./utils/logger.js";
 
-dotenv.config(); 
+dotenv.config();
 
 //connecting Database
 db_conn();
