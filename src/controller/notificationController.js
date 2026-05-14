@@ -2,6 +2,7 @@ import Notification from "../models/notificationModel.js";
 import User from "../models/userModel.js";
 import Post from "../models/postModel.js";
 import Comment from "../models/commentModel.js";
+
 const createNotification = async (req, res, next) => {
   try {
     const { userId, triggeredBy, type, postId, commentId } = req.body;
@@ -43,13 +44,11 @@ const createNotification = async (req, res, next) => {
       postId,
       commentId,
     });
-    res
-      .status(201)
-      .json({
-        success: true,
-        message: "Notification created successfully",
-        notification,
-      });
+    res.status(201).json({
+      success: true,
+      message: "Notification created successfully",
+      notification,
+    });
   } catch (err) {
     next(err);
   }

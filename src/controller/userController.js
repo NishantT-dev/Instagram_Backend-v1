@@ -146,8 +146,7 @@ const followUser = async (req, res, next) => {
     res
       .status(201)
       .json({ success: true, message: "User Followed Successfully", follow });
-  }
-   catch (err) {
+  } catch (err) {
     // Handle duplicate key error (MongoDB error code 11000)
     if (err.code === 11000) {
       return res.status(400).json({ message: "Already following this user." });
